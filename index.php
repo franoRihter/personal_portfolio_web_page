@@ -12,7 +12,7 @@
 ini_set('display_errors', 1);
 
 include "connection.php";
-$tekst = "SELECT id, naslov, clanak, datum FROM tablica1;";
+$tekst = "SELECT id, tekst FROM pocetna;";
 $result = mysqli_query($conn, $tekst);
 ?>
 <body>

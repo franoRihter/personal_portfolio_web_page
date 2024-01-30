@@ -6,6 +6,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
+<?php
+//korisno za prikazivanje errora
+ini_set('display_errors', 1);
+
+include "connection.php";
+$tekst = "SELECT id, DATE_FORMAT(datum, '%d, %m, %Y') formatirani_datum, naslov, citanje, link 
+FROM blog;";
+$result = mysqli_query($conn, $tekst);
+
+$tagovi = "SELECT t.id, t.tag, t.id_projekta FROM tag as t 
+        WHERE t.id_projekta IN (SELECT id from blog);";
+$result1 = mysqli_query($conn, $tagovi);
+?>
 <div class="container">
     <div class="izbornik2"><div class="izbornik_naslov">
         <h1>Ovo je blog</h1>
@@ -22,19 +36,26 @@
 </div>
 </div>
 <body class = "blog_body">
-    
+<?php echo "!php radi"?>
+<?php
+while($row = mysqli_fetch_assoc($result)) {
+    echo '
 <div class="popis_kutija">
     <div class="kutija">
-        <p class="datum">20.11.2023.</p>
-        <p>Ovo je naslov</p>
+        <p class="datum">'.$row["formatirani_datum"].'</p>
+        <p>'.$row["naslov"].'</p>
         <ul class="lista_tagova">
-            <li>#tag</li>
-            <li>#tag1</li>
-            <li>#tag2</li>
+        ';
+        while ($row1= mysqli_fetch_assoc($result1)){
+            echo ' <li>'.$row1["tag"].'</li>';
+        }
+        echo '
         </ul>
-        <p class="citanje">10 min</p>
+        <p class="citanje">'.$row["citanje"].'</p>
     </div>
 </div>
+';}
+?>
     </div>
 </body>
 </html>
