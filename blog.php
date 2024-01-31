@@ -16,8 +16,8 @@ $tekst = "SELECT id, DATE_FORMAT(datum, '%d, %m, %Y') formatirani_datum, naslov,
 FROM blog;";
 $result = mysqli_query($conn, $tekst);
 
-$tagovi = "SELECT t.id, t.tag, t.id_projekta FROM tag as t 
-        WHERE t.id_projekta IN (SELECT id from blog);";
+$tagovi = "SELECT t.id, t.tag, t.id_blog FROM tag as t 
+        WHERE t.id_blog IN (SELECT id from blog);";
 $result1 = mysqli_query($conn, $tagovi);
 ?>
 <div class="container">
@@ -27,16 +27,16 @@ $result1 = mysqli_query($conn, $tagovi);
 </div>
     <div class="izbornik2"><div class="izbornik_lista">
         <ul class="lista">
-            <li><a href="index.html">index</a></li>
-            <li><a href="projekti.html">projekti</a></li>
-            <li>upiti</li>
-            <li><a href="blog.html">blog</a></li>
+            <li><a href="index.php">index</a></li>
+            <li><a href="projekti.php">projekti</a></li>
+            <li>kontakt</li>
+            <li><a href="blog.php">blog</a></li>
         </ul>
     </div>
 </div>
 </div>
 <body class = "blog_body">
-<?php echo "!php radi"?>
+
 <?php
 while($row = mysqli_fetch_assoc($result)) {
     echo '

@@ -23,10 +23,10 @@ $result = mysqli_query($conn, $tekst);
         </div>
             <div class="izbornik2"><div class="izbornik_lista">
                 <ul class="lista">
-                    <li><a href="index.html">index</a></li>
-                    <li><a href="projekti.html">projekti</a></li>
-                    <li>upiti</li>
-                    <li><a href="blog.html">blog</a></li>
+                    <li><a href="index.php">index</a></li>
+                    <li><a href="projekti.php">projekti</a></li>
+                    <li>kontakt</li>
+                    <li><a href="blog.php">blog</a></li>
                 </ul>
             </div>
     </div>
