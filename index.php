@@ -34,8 +34,8 @@ $result = mysqli_query($conn, $tekst);
     <?php $row = mysqli_fetch_assoc($result)?>
     <div class="paragraf1">
         <p><?php echo "ovo je tekst";?></p>
-        <p><?php echo $row["naslov"];?></p>
-        <p><?php echo $row["clanak"];?></p>
+        <p><?php echo $row["id"];?></p>
+        <p><?php echo $row["tekst"];?></p>
     </div>
     
 </body>

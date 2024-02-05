@@ -13,9 +13,9 @@
 </div>
     <div class="izbornik2"><div class="izbornik_lista">
         <ul class="lista">
-            <li><a href="index.html">index</a></li>
-            <li><a href="projekt.html">projekti</a></li>
-            <li>kontkat</li>
+            <li><a href="index.php">index</a></li>
+            <li><a href="projekt.php">projekti</a></li>
+            <li>kontakt</li>
             <li><a href="blog.php">blog</a></li>
         </ul>
     </div>
@@ -30,7 +30,7 @@ include "connection.php";
 $tekst ="SELECT id, jezik, naslov, opis, link FROM projekti;";
 $result=mysqli_query($conn, $tekst);
 
-$tekst1 ="SELECT t.id, t.tag, t.id_projekta FROM tag as t 
+$tekst1 ="SELECT t.id, t.tag, t.id_projekta, t.link FROM tag as t 
 WHERE t.id_projekta IN (SELECT id from blog);";
 $result1=mysqli_query($conn, $tekst1);
 ?>
@@ -39,10 +39,12 @@ while ($row = mysqli_fetch_assoc($result)){
 echo '
 <div class="opis_projekta">
     <div class="projekt">
-        <p class="jezici">';while ($row1 = mysqli_fetch_assoc($result1)){echo '#'.$row1["tag"];}
+        <p class="jezici">';while ($row1 = mysqli_fetch_assoc($result1)){echo '<a href="link_za_tag.php">#'.$row1["tag"].'</a>&nbsp';}
         echo '</p>
-        <h2><a href="'.$row["link"].'">'.$row["naslov"].'</a></h2>
+        <div> <a href="'.$row["link"].'">
+        <h2>'.$row["naslov"].'</h2>
         <p class="opis_projekta">'.$row["opis"].'</p>
+        </a><div\>
     </div>
     ';}?>
 </div>

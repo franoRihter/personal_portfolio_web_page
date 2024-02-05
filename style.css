@@ -84,7 +84,8 @@ ovo je blog
 }
 .popis_kutija{
     width:70%;
-    margin-left:15%
+    margin-left:15%;
+    padding-bottom: 6px;
     
 }
 .citanje{

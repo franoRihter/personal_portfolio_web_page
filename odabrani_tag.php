@@ -22,7 +22,9 @@ $result1 = mysqli_query($conn, $tagovi);
 ?>
 <div class="container">
     <div class="izbornik2"><div class="izbornik_naslov">
-        <h1>Ovo je blog</h1>
+        <?php echo'
+        <h1>'.$_GET["subject"].'</h1>';
+        ?>
     </div>
 </div>
     <div class="izbornik2"><div class="izbornik_lista">
@@ -36,7 +38,7 @@ $result1 = mysqli_query($conn, $tagovi);
 </div>
 </div>
 <body class = "blog_body">
-
+<h2>Blog</h2>
 <?php
 while($row = mysqli_fetch_assoc($result)) {
     echo '
@@ -47,7 +49,7 @@ while($row = mysqli_fetch_assoc($result)) {
         <ul class="lista_tagova">
         ';
         while ($row1= mysqli_fetch_assoc($result1)){
-            echo ' <li><a href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].'</a></li>';
+            echo ' <li>'.$row1["tag"].'</li>';
         }
         echo '
         </ul>
@@ -56,6 +58,22 @@ while($row = mysqli_fetch_assoc($result)) {
 </div>
 ';}
 ?>
+<h2>Projekti</h2>
+<div class="popis_kutija">
+    <div class="kutija">
+        <p class="datum">'.$row["formatirani_datum"].'</p>
+        <p>'.$row["naslov"].'</p>
+        <ul class="lista_tagova">
+        ';
+        while ($row1= mysqli_fetch_assoc($result1)){
+            echo ' <li>'.$row1["tag"].'</li>';
+        }
+        echo '
+        </ul>
+        <p class="citanje">'.$row["citanje"].'</p>
+    </div>
+</div>
+
     </div>
 </body>
 </html>
