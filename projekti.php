@@ -39,9 +39,9 @@ while ($row = mysqli_fetch_assoc($result)){
 echo '
 <div class="opis_projekta">
     <div class="projekt">
-        <p class="jezici">';while ($row1 = mysqli_fetch_assoc($result1)){echo '<a href="link_za_tag.php">#'.$row1["tag"].'</a>&nbsp';}
+        <p class="jezici">';while ($row1 = mysqli_fetch_assoc($result1)){echo '<a href="odabrani_tag.php?subject='.$row1["tag"].'">#'.$row1["tag"].'</a>&nbsp';}
         echo '</p>
-        <div> <a href="'.$row["link"].'">
+        <div> <a href="projekt.php?subject='.$row["id"].'">
         <h2>'.$row["naslov"].'</h2>
         <p class="opis_projekta">'.$row["opis"].'</p>
         </a><div\>

@@ -43,7 +43,7 @@ while($row = mysqli_fetch_assoc($result)) {
 <div class="popis_kutija">
     <div class="kutija">
         <p class="datum">'.$row["formatirani_datum"].'</p>
-        <p>'.$row["naslov"].'</p>
+        <p><a href="'.$row["link"].'">'.$row["naslov"].'</a></p>
         <ul class="lista_tagova">
         ';
         while ($row1= mysqli_fetch_assoc($result1)){

@@ -10,15 +10,32 @@
 <?php
 //korisno za prikazivanje errora
 ini_set('display_errors', 1);
-
 include "connection.php";
-$tekst = "SELECT id, DATE_FORMAT(datum, '%d, %m, %Y') formatirani_datum, naslov, citanje, link 
-FROM blog;";
+
+$subject = mysqli_real_escape_string($conn, $_GET['subject']);
+
+$tekst = "SELECT b.id, DATE_FORMAT(datum, '%d, %m, %Y') formatirani_datum, b.naslov, b.citanje, b.link 
+FROM blog as b
+JOIN tag t ON b.id=t.id_blog
+WHERE t.tag = '".$subject."';";
 $result = mysqli_query($conn, $tekst);
 
-$tagovi = "SELECT t.id, t.tag, t.id_blog FROM tag as t 
-        WHERE t.id_blog IN (SELECT id from blog);";
-$result1 = mysqli_query($conn, $tagovi);
+//tagovi za blog po potrebi
+//$tagovi = "SELECT t.id, t.tag, t.id_blog FROM tag as t 
+//        WHERE t.id_blog IN (SELECT id from blog);";
+//$result1 = mysqli_query($conn, $tagovi);
+
+$tekst1 = "SELECT p.id, p.naslov, p.link 
+FROM projekti as p
+JOIN tag t ON p.id=t.id_projekta
+WHERE t.tag = '".$subject."';";
+$result2 = mysqli_query($conn, $tekst1);
+
+//tagovi za projekte po potrebi
+//$tagovi = "SELECT t.id, t.tag, t.id_projekta FROM tag as t 
+//        WHERE t.id_projekta IN (SELECT id from projekti);";
+//$result3 = mysqli_query($conn, $tagovi);
+
 ?>
 <div class="container">
     <div class="izbornik2"><div class="izbornik_naslov">
@@ -45,35 +62,23 @@ while($row = mysqli_fetch_assoc($result)) {
 <div class="popis_kutija">
     <div class="kutija">
         <p class="datum">'.$row["formatirani_datum"].'</p>
-        <p>'.$row["naslov"].'</p>
-        <ul class="lista_tagova">
-        ';
-        while ($row1= mysqli_fetch_assoc($result1)){
-            echo ' <li>'.$row1["tag"].'</li>';
-        }
-        echo '
-        </ul>
+        <p><a href="'.$row["link"].'">'.$row["naslov"].'</a></p>
         <p class="citanje">'.$row["citanje"].'</p>
     </div>
 </div>
 ';}
 ?>
 <h2>Projekti</h2>
+<?php 
+while($row = mysqli_fetch_assoc($result2)){
+    echo '
+
 <div class="popis_kutija">
     <div class="kutija">
-        <p class="datum">'.$row["formatirani_datum"].'</p>
-        <p>'.$row["naslov"].'</p>
-        <ul class="lista_tagova">
-        ';
-        while ($row1= mysqli_fetch_assoc($result1)){
-            echo ' <li>'.$row1["tag"].'</li>';
-        }
-        echo '
-        </ul>
-        <p class="citanje">'.$row["citanje"].'</p>
+        <p><a href="'.$row["link"].'">'.$row["naslov"].'</a></p>
     </div>
 </div>
-
-    </div>
+';}?>
+</div>
 </body>
 </html>
