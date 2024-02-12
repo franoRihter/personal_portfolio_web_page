@@ -31,22 +31,24 @@ $tekst ="SELECT id, jezik, naslov, opis, link FROM projekti;";
 $result=mysqli_query($conn, $tekst);
 
 $tekst1 ="SELECT t.id, t.tag, t.id_projekta, t.link FROM tag as t 
-WHERE t.id_projekta IN (SELECT id from blog);";
+WHERE t.id_projekta in (SELECT id from projekti);";
+
 $result1=mysqli_query($conn, $tekst1);
 ?>
+<div class="opis_projekta">
 <?php
 while ($row = mysqli_fetch_assoc($result)){
 echo '
-<div class="opis_projekta">
     <div class="projekt">
-        <p class="jezici">';while ($row1 = mysqli_fetch_assoc($result1)){echo '<a href="odabrani_tag.php?subject='.$row1["tag"].'">#'.$row1["tag"].'</a>&nbsp';}
+        <p class="jezici">'; $result1=mysqli_query($conn, $tekst1); while ($row1 = mysqli_fetch_assoc($result1)){if($row["id"]==$row1["id_projekta"]){echo '<a href="odabrani_tag.php?subject='.$row1["tag"].'">#'.$row1["tag"].'</a>&nbsp';}}
         echo '</p>
         <div> <a href="projekt.php?subject='.$row["id"].'">
         <h2>'.$row["naslov"].'</h2>
         <p class="opis_projekta">'.$row["opis"].'</p>
-        </a><div\>
-    </div>
-    ';}?>
+        </a></div>
+    </div>'
+;}?>
+</div>
 </div>
 </body>
 </html>

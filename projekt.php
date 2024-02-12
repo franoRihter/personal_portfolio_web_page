@@ -11,6 +11,7 @@
 //napravi funkciju za strijelice koja koristi novi get ispocetak
 //napravi uvijet u funkicji koji gleda jeli id sljedece funkcije manji od 0 (odnosno 1) 
 //i onda vrti novu ili ne vrti uopce
+//////Pokusaj koristit rijecnik???
 
     //korisno za prikazivanje errora
     ini_set('display_errors', 1);
@@ -30,14 +31,50 @@ $tagovi = "SELECT id, tag, id_projekta FROM tag
 WHERE id_projekta = ".$subject.";";
 $result1 = mysqli_query($conn, $tagovi);
 
+
+// navigacija strjelicama
+function naprijed(){
+    include "connection.php";
+    $subject = $_GET['subject'];
+    $upit = "SELECT count(id) FROM projekti;";
+    $result2 = mysqli_query($conn, $upit);
+    $row=mysqli_fetch_assoc($result2);
+    $zbroj_projekta = intval($row["count(id)"]);
+
+    if(intval($subject) == $zbroj_projekta-1){
+        $subject = "0";
+    }else{
+        $subject = $subject = strval(intval($subject)+1);
+    }
+    return $subject;
+
+}
+naprijed();
+
+function nazad(){
+    include "connection.php";
+    $subject = $_GET['subject'];
+    $upit = "SELECT count(id) FROM projekti;";
+    $result2 = mysqli_query($conn, $upit);
+    $row=mysqli_fetch_assoc($result2);
+    $zbroj_projekta = intval($row["count(id)"]);
+
+    if(intval($subject) == 0){
+        $subject = $zbroj_projekta-1;
+    }else{
+        $subject = $subject = intval($subject)-1;
+    }
+    return $subject;
+
+}
 ?>
     <div class = "opis">
         <div class = "listanje_projekata">
             <span><a href="projekti.php">&#10006;</a></span>
             <span class="navigacija_strjelice">
-                <a href="">&lsaquo;&#10229;</a>
+                <a href="<?php echo "projekt.php?subject=".nazad();?>">&lsaquo;&#10229;</a>
                 <span>&nbsp&#8725;&nbsp</span>
-                <a href="">&#10230;&rsaquo;</a>
+                <a href="<?php echo "projekt.php?subject=".naprijed();?>">&#10230;&rsaquo;</a>
             </span>
         </div>
         <!-- tagovi -->
