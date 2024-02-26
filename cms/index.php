@@ -27,24 +27,26 @@ else{
     samo napravi input polje za svaki unos u bazi i tjt.
     trebalo bi smislit kako ubacit slike to je malo zajebano, ali snađi se-->
     <h2>Blog</h2>
-    <label for="username">Naslov:</label><br>
-    <input type="text" name="username" requred><br>
+    <form action="unos_handler.php" method="post">
+    <label for="naslov">Naslov:</label><br>
+    <input type="text" name="naslov" requred><br>
     
-    <label for="username">Datum:</label><br>
+    <label for="datum">Datum:</label><br>
     <input type="date" id="datum" name="datum"><br>
 
-    <label for="username">Sadržaj:</label><br>
-    <input type="text" name="username" requred><br>
+    <label for="sadrzaj">Sadržaj:</label><br>
+    <input type="text" name="sadrzaj" requred><br>
 
-    <label for="username">Vrijeme čitanja:</label><br>
-    <input type="text" name="username" requred><br>
+    <label for="vrijeme_citanja">Vrijeme čitanja:</label><br>
+    <input type="text" name="vrijeme_citanja" requred><br>
 
-    <label for="username">Link:</label><br>
-    <input type="text" name="username" requred><br>
+    <label for="link">Link:</label><br>
+    <input type="text" name="link" requred><br>
 
-    <label for="username">Tagovi:</label><br>
-    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"><br>
+    <label for="tagovi">Tagovi:</label><br>
+    <input type="checkbox" id="tagovi" name="tagovi" value="Bike"><br>
 
-
+    <br><button type="submit">unos</button>
+    </form>
 </body>
 </html>
