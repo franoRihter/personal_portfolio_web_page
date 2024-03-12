@@ -1,2 +1,2 @@
 # README.md
-this is my prototype of personal web portfolio, blog and soon to be more.
+this is my prototype of personal web portfolio and blog.
