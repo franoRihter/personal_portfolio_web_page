@@ -22,7 +22,7 @@ $unos = "INSERT INTO blog (datum, naslov, sadrzaj, citanje, link) VALUES ('".dat
 
 if ($conn->query($unos) === TRUE) {
     echo "New record created successfully";
-    #header("Location: index.php");
+    header("Location: index.php");
 
 } else {
     echo "Error: " . $unos . "<br>" . $conn->error;
