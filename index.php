@@ -25,7 +25,7 @@ $result = mysqli_query($conn, $tekst);
                 <ul class="lista">
                     <li><a href="index.php">index</a></li>
                     <li><a href="projekti.php">projekti</a></li>
-                    <li>kontakt</li>
+                    <li><a href="kontakt.php">kontakt</a></li>
                     <li><a href="blog.php">blog</a></li>
                 </ul>
             </div>
