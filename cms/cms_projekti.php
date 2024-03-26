@@ -15,6 +15,10 @@ ini_set('display_errors', 1);
 $upit = "SELECT DISTINCT(tag) FROM tag;";
 $tagovi = mysqli_query($conn, $upit);
 $brojac_tagova = 0;
+
+$upit_projekata="SELECT id, naslov, datum, opis FROM projekti;";
+$projekti = mysqli_query($conn, $upit_projekata);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +36,8 @@ $brojac_tagova = 0;
     <!-- ovdje napraviti cijeli cms. dakle ideja je jednostavna
     samo napravi input polje za svaki unos u bazi i tjt.
     trebalo bi smislit kako ubacit slike to je malo zajebano, ali snađi se-->
+    <div>
+    <div class="dodaj">
     <h2>Dodaj novi projekt</h2>
     <form action="unos_handler_projekti.php" method="post">
     <label for="naslov">Naslov:</label><br>
@@ -51,8 +57,38 @@ $brojac_tagova = 0;
         $brojac_tagova+=1;
     }
     ?>
-
     <br><button type="submit">unos</button>
     </form>
+    </div>
+
+    <div class="uredi">
+    <h2>Uredi</h2>
+    <form action="update_handler_projekti">
+    <?php 
+    $brojac_boje=True;
+    while($projekt = mysqli_fetch_assoc($projekti)){
+        if($brojac_boje==True){
+            echo '<a href = "uredi_projekt.php?subject='.$projekt["id"].'"><div>
+            <em>'.$projekt["id"].'|</em>
+            <em>'.$projekt["naslov"].'|</em>
+            <em>'.$projekt["opis"].'|</em>
+            </div></a>';
+            $brojac_boje=False;
+        }else{
+            echo '<a href = "uredi_projekt.php?subject='.$projekt["id"].'"><div class="popis">
+            <em>'.$projekt["id"].'|</em>
+            <em>'.$projekt["naslov"].'|</em>
+            <em>'.$projekt["opis"].'|</em>
+            </div></a>';
+            $brojac_boje=True;
+        }
+        
+    }
+    #<textarea name="" id="" cols="30" rows="10">ovo je tekst</textarea>
+    ?>
+    </form>
+
+    </div>
+    </div>
 </body>
 </html>
