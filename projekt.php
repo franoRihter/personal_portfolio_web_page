@@ -8,10 +8,6 @@
 </head>
 <body>
 <?php
-//napravi funkciju za strijelice koja koristi novi get ispocetak
-//napravi uvijet u funkicji koji gleda jeli id sljedece funkcije manji od 0 (odnosno 1) 
-//i onda vrti novu ili ne vrti uopce
-//////Pokusaj koristit rijecnik???
 
     //korisno za prikazivanje errora
     ini_set('display_errors', 1);
@@ -20,7 +16,7 @@ include "connection.php";
 $subject = mysqli_real_escape_string($conn, $_GET['subject']);
 
 //ovisno o getu clanak
-$tekst ="SELECT id, jezik, naslov, opis, link FROM projekti
+$tekst ="SELECT id, naslov, opis, link FROM projekti
 WHERE id = ".$subject .";";
 
 $result=mysqli_query($conn, $tekst);
@@ -70,11 +66,11 @@ function nazad(){
 ?>
     <div class = "opis">
         <div class = "listanje_projekata">
-            <span><a href="projekti.php">&#10006;</a></span>
+            <span><a class="strjelice" href="projekti.php">&#10006;</a></span>
             <span class="navigacija_strjelice">
-                <a href="<?php echo "projekt.php?subject=".nazad();?>">&lsaquo;&#10229;</a>
+                <a class="strjelice" href="<?php echo "projekt.php?subject=".nazad();?>">&lsaquo;&#10229;</a>
                 <span>&nbsp&#8725;&nbsp</span>
-                <a href="<?php echo "projekt.php?subject=".naprijed();?>">&#10230;&rsaquo;</a>
+                <a class="strjelice" href="<?php echo "projekt.php?subject=".naprijed();?>">&#10230;&rsaquo;</a>
             </span>
         </div>
         <!-- tagovi -->
@@ -83,17 +79,18 @@ function nazad(){
         //grananje je radi zareza na kraju zadnjeg taga
         while ($row1 = mysqli_fetch_assoc($result1)){
             if($brojac != (count($row1)-2)){
-                echo '<a href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].',</a>&nbsp';
+                echo '<a class="meni_navigacija" href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].',</a>&nbsp';
             }else{
-                echo '<a href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].'</a>&nbsp';
+                echo '<a class="meni_navigacija" href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].'</a>&nbsp';
             }
             $brojac+=1;
             }?></p>
         <h2><?php echo $row["naslov"];?></h2>
         <p><?php echo $row["opis"];?></p>
-        <a href="".<?php echo $row["link"];?>."">Link GitHub</a>
+        <br>
+        <a class="github_link" href=<?php echo '"'.$row["link"].'"';?>>Link GitHub</a>
     </div>
-</body>
+
     <div class = "prikaz">
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
@@ -116,5 +113,5 @@ function nazad(){
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
     </div>
-
+    </body>
 </html>

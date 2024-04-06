@@ -25,7 +25,7 @@ $result = mysqli_query($conn, $tekst);
 //        WHERE t.id_blog IN (SELECT id from blog);";
 //$result1 = mysqli_query($conn, $tagovi);
 
-$tekst1 = "SELECT p.id, p.naslov, p.link 
+$tekst1 = "SELECT p.id, p.naslov 
 FROM projekti as p
 JOIN tag t ON p.id=t.id_projekta
 WHERE t.tag = '".$subject."';";
@@ -38,36 +38,35 @@ $result2 = mysqli_query($conn, $tekst1);
 
 ?>
 <div class="container">
-    <div class="izbornik2"><div class="izbornik_naslov">
-        <?php echo'
-        <h1>'.$_GET["subject"].'</h1>';
-        ?>
+        <div class="izbornik2"><div class="izbornik_naslov">
+        <?php echo'<h1>'.$_GET["subject"].'</h1>';?>
+        </div>
     </div>
+        <div class="izbornik2"><div class="izbornik_lista">
+            <ul class="lista">
+                <li><a class="meni_navigacija" href="index.php">index</a></li>
+                <li><a class="meni_navigacija" href="projekti.php">projekti</a></li>
+                <li><a class="meni_navigacija" href="/../kontakt.html">kontakt</a></li>
+                <li><a class="meni_navigacija" href="blog.php">blog</a></li>
+            </ul>
+        </div>
 </div>
-    <div class="izbornik2"><div class="izbornik_lista">
-        <ul class="lista">
-            <li><a href="index.php">index</a></li>
-            <li><a href="projekti.php">projekti</a></li>
-            <li>kontakt</li>
-            <li><a href="blog.php">blog</a></li>
-        </ul>
-    </div>
+
 </div>
+<!-- ovj je mobilni dio-->
+        <div class="mobilni_izbornik">
+                <div class="mobilni_izbornik_elementi"><a href="index.php">index</a></div>
+                <div class="mobilni_izbornik_elementi"><a href="projekti.php">projekti</a></div>
+                <div class="mobilni_izbornik_elementi"><a href="/../kontakt.html">kontakt</a></div>
+                <div class="mobilni_izbornik_elementi"><a  href="blog.php">blog</a></div>
+            
 </div>
-<body class = "blog_body">
-<h2>Blog</h2>
-<?php
-while($row = mysqli_fetch_assoc($result)) {
-    echo '
-<div class="popis_kutija">
-    <div class="kutija">
-        <p class="datum">'.$row["formatirani_datum"].'</p>
-        <p><a href="'.$row["link"].'">'.$row["naslov"].'</a></p>
-        <p class="citanje">'.$row["citanje"].'</p>
-    </div>
-</div>
-';}
-?>
+<nav><h1 class="naslov_mobilni"><?php echo'<h1>'.$_GET["subject"].'</h1>';?></h1><div class="ham-menu"> 
+    <span></span>
+    <span></span>
+    <span></span>
+</div></nav>
+
 <h2>Projekti</h2>
 <?php 
 while($row = mysqli_fetch_assoc($result2)){
@@ -75,10 +74,25 @@ while($row = mysqli_fetch_assoc($result2)){
 
 <div class="popis_kutija">
     <div class="kutija">
-        <p><a href="'.$row["link"].'">'.$row["naslov"].'</a></p>
+        <p><a href="projekt.php?subject='.$row["id"].'">'.$row["naslov"].'</a></p>
     </div>
 </div>
 ';}?>
+
+<h2>Blog</h2>
+<?php
+while($row = mysqli_fetch_assoc($result)) {
+    echo '
+<div class="popis_kutija">
+    <div class="kutija">
+        <p class="datum">'.$row["formatirani_datum"].'</p>
+        <p><a href="blog_post.php?subject='.$row["id"].'">'.$row["naslov"].'</a></p>
+        <p class="citanje">'.$row["citanje"].'</p>
+    </div>
 </div>
+';}
+?>
+</div>
+<script src="skripta.js"></script> 
 </body>
 </html>

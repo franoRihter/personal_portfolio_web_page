@@ -8,6 +8,9 @@ a {
     text-decoration: none; /* Remove underline */
     color: inherit; /* Inherit the text color from the parent */
   }
+.mobilni_izbornik{
+    display: none;
+}
 /*
 ovoj je index
 */
@@ -50,7 +53,9 @@ li{
 li:not(:last-child){ 
     margin-right: 15px;  
 }
-
+.meni_navigacija:hover{
+    text-decoration: underline;
+}
 /*
 ovo je blog
 */
@@ -63,7 +68,6 @@ ovo je blog
 
 }
 .kutija{
-    position:absolute;
     padding-left: 6px;
     padding-top: 1px;
     padding-bottom: 1px;
@@ -71,7 +75,7 @@ ovo je blog
     border-width: thin;
     border-radius: 10px;
     border-color: rgb(192, 192, 192);
-    position: relative;
+
 
 
 }
@@ -99,8 +103,16 @@ ovo je blog
 .lista_tagova{
     height: 1em;
     width: 100%;
-    color:#5285c8;
     margin-right: 10%;
+}
+.tag{
+    border: solid 1px;
+    color:#5285c8;
+    padding: 0.2em;
+    border-radius: 20px;
+}
+.tag:hover{
+    background-color: rgba(211, 230, 237, 0.713);
 }
 .lista_tagova li{
     font-size: 14px;
@@ -112,7 +124,6 @@ ovo je blog
     flex-wrap: wrap;
 }
 .projekt{
-    position:absolute;
     padding-left: 6px;
     margin-bottom: 6px;
     margin-left:0.3%;
@@ -121,7 +132,7 @@ ovo je blog
     border-width: thin;
     border-radius: 10px;
     border-color: rgb(192, 192, 192);
-    position: relative;
+
     font-style: bold;
     display: inline-block;
     width: 32.5%;
@@ -161,11 +172,77 @@ ovo je blog
     font:bold;
 
 }
+.strjelice:hover{
+    font: bold;
+    color: rgb(127, 74, 6);
+}
+.github_link{
+    background-color: black;
+    color:white;
+    padding:10px 10px;
+}
 .popis{
     background-color:#f0eae1;
+    padding-top:0.12em;
+    padding-bottom:0.10em;
 
 }
+.popis1{
+    padding-top:0.12em;
+    padding-bottom:0.10em;
 
+}
+.blog_tijelo{
+    display: flex;
+}
+.blog_tekst{
+    width: 70%;
+    padding-left:2em;
+    display: inline-block;
+
+    
+}
+.tagovi_bloga{
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 3em;
+    
+    width:20%;
+    text-align:right;
+    display: inline-block;
+}
+.naslov_tagova{
+    text-align:  left;
+    display: inline-block;
+    display: flex;
+}
+.blog_citnje_datum{
+    padding-left:1em;
+    padding-right: 1em;
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+
+}
+.blog_tag_stil{
+    border: solid 1px;
+    padding: 0.2em;
+    color:#5285c8;
+    border-radius: 20px;
+}
+.blog_tag_stil:hover{
+    background-color: rgba(118, 168, 197, 0.709);
+    color: rgba(247, 243, 234, 0.842);
+}
+.blog_post_vrijeme{
+    
+}
+.em1{
+    padding:0.3px;
+}
+.naslov_mobilni{
+    display: none;
+}
 /*stavi howere*/
 /* za mobiltele*/
 /* projekt*/
@@ -189,5 +266,86 @@ ovo je blog
         padding-left:10px;
     }
     /* projekt*/
+    
+    /*navbar*/
+    nav{
+        padding:1rem;
+        display: flex;
+    }
+    .ham-menu{
+        height: 50px;
+    }
+    .izbornik2{
+        display:none;
+    }
+    nav{
+        padding: 1rem;
+        display:flex;
+        background-color: rgba(247, 243, 234, 0.842);
+    }
+    .ham-menu{
+        height: 50px;
+        width: 50px;
+        margin-left:auto;
+        position: relative;
+    }
+    .ham-menu span{
+        height: 5px;
+        width: 100%;
+        background-color: rgb(173, 122, 55);
+        border-radius: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.2s ease;
+    }
+    .ham-menu span:nth-child(1){
+        top: 25%;
+    }
+    .ham-menu span:nth-child(3){
+        top: 75%;
+    }
+    .ham-menu.active span:nth-child(1){
+        top: 50%;
+        transform: translate(-50%, 50%) rotate(45deg);
+    }
+    .ham-menu.active span:nth-child(2){
+        opacity:0;
+    }
+    .ham-menu.active span:nth-child(3){
+        top: 50%;
+        transform: translate(-50%, 50%) rotate(-45deg);
+    }
+    .mobilni_izbornik{
+        background-color: #f0eae1;
+        height: 100vh;
+        width: 100%;
+        max-width: 450px;
+        position:fixed;
+        top:0;
+        right:-450px;
+        display:flex;
+        flex-direction: column;
+        transition:0.3s ease;
+        
+    }
+    .mobilni_izbornik_elementi{
+        margin:10px;
+        padding: 1em;
+        display:flex;
+        align-items: center;
+        font-size: large;
+    }
+    .naslov_mobilni{
+        display: inline;
+        float: left;
+    }
+  }
+  .mobilni_izbornik.active{
+    right:0;
 
   }
+
+
+
