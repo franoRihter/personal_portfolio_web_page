@@ -4,7 +4,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfelj | index</title>
     <link rel="stylesheet" href="style.css">
     
 </head>
@@ -16,6 +16,7 @@ include "connection.php";
 $tekst = "SELECT id, tekst FROM pocetna;";
 $result = mysqli_query($conn, $tekst);
 ?>
+<!--- tema (boje) je groovebox-->
 <body>
     <div class="container">
             <div class="izbornik2"><div class="izbornik_naslov">
@@ -46,7 +47,15 @@ $result = mysqli_query($conn, $tekst);
         <span></span>
         <span></span>
     </div></nav>
-
+    <div class="index_opis_stranice">
+        <p>Dobro došli u moje digitalno skladište!</p>
+        <p style="color: #fabd2f;">Ja sam Frano Rihter. Programer, prvostupnik računarstva.</p>
+        <p style="color:#98971a;">Svrha stranice je: </p>
+        <p style="padding-left: 10px; color:#83a598;">- predstavljanje aktivnih i gotovih projekata</p>
+        <p style="padding-left: 10px; color:#83a598;">- pohrana stečenog znanja u svrhu ponovne upotrebe</p>
+        <p style="padding-left: 10px; color:#83a598;">- predstavljanje osobnih zanimacija</p>
+        <p>Nadam se da ćete naći ono što tražite ili barem nešto zanimljivo.</p>
+    </div>
     <h3>Aktivnosi:</h3>
     <div class="paragraf1">
         <h4>Projekti</h4>
@@ -88,13 +97,13 @@ $result = mysqli_query($conn, $tekst);
     $brojac_boje=True;
     while($row1 = mysqli_fetch_assoc($result1)){
         if($brojac_boje==True){
-            echo '<a href = "projekt.php?subject='.$row1["id"].'"><div class="popis">
+            echo '<a href = "blog_post.php?subject='.$row1["id"].'"><div class="popis">
             <em>'.$row1["formatirani_datum"].'|</em>
             <em>'.$row1["naslov"].'</em>
             </div></a>';
             $brojac_boje=False;
         }else{
-            echo '<a href = "projekt.php?subject='.$row1["id"].'"><div div class="popis1">
+            echo '<a href = "blog_post.php?subject='.$row1["id"].'"><div div class="popis1">
             <em>'.$row1["formatirani_datum"].'|</em>
             <em>'.$row1["naslov"].'</em>
             </div></a>';

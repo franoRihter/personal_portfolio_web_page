@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfelj | blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,7 +24,7 @@ $tagovi = "SELECT t.id, t.tag, t.id_blog FROM tag as t
 <body>
 <div class="container">
     <div class="izbornik2"><div class="izbornik_naslov">
-                <h1>Frano Rihter</h1>
+                <h1>Blog</h1>
             </div>
         </div>
             <div class="izbornik2"><div class="izbornik_lista">
@@ -46,7 +46,7 @@ $tagovi = "SELECT t.id, t.tag, t.id_blog FROM tag as t
                     <div class="mobilni_izbornik_elementi"><a  href="blog.php">blog</a></div>
                 
 </div>
-<nav><h1 class="naslov_mobilni">Frano Rihter</h1><div class="ham-menu"> 
+<nav><h1 class="naslov_mobilni">Blog</h1><div class="ham-menu"> 
         <span></span>
         <span></span>
         <span></span>
@@ -58,7 +58,7 @@ while($row = mysqli_fetch_assoc($result)) {
 <div class="popis_kutija">
     <div class="kutija">
         <p class="datum">'.$row["formatirani_datum"].'</p>
-        <p><a href="blog_post.php?subject='.$row["id"].'">'.$row["naslov"].'</a></p>
+        <p><a href="blog_post.php?subject='.$row["id"].'" class="blog_naslovi">'.$row["naslov"].'</a></p>
         <ul class="lista_tagova">
         ';
         $result1=mysqli_query($conn, $tagovi); while ($row1 = mysqli_fetch_assoc($result1)){if($row["id"]==$row1["id_blog"]){echo '<a class="tag" href="odabrani_tag.php?subject='.$row1["tag"].'">#'.$row1["tag"].'</a>&nbsp';}};
