@@ -58,8 +58,8 @@
 <h1><?php echo $row["naslov"];?></h1>
     <div class="blog_citanje_datum">
         <span>
-            <li class="blog_post_datum"><?php echo $row["formatirani_datum"];?></li>
-            <li class="blog_post_vrijeme">vrijeme čitanja: <?php echo $row["citanje"];?></li>
+            <li style="color: #bdae93"><?php echo $row["formatirani_datum"];?></li>
+            <li style="color: #bdae93">vrijeme čitanja: <?php echo $row["citanje"];?></li>
 </span>
     </div>
     <div class="blog_sadrzaj">

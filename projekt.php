@@ -28,6 +28,11 @@ WHERE id_projekta = ".$subject.";";
 $result1 = mysqli_query($conn, $tagovi);
 
 
+//slike
+$slike="SELECT id, naziv, id_projekta FROM slike 
+WHERE id_projekta = ".$subject."; ";
+$result2 = mysqli_query($conn, $slike);
+
 // navigacija strjelicama
 function naprijed(){
     include "connection.php";
@@ -75,10 +80,11 @@ function nazad(){
         </div>
         <!-- tagovi -->
         <p><?php 
-        $brojac=0;
+        $brojac=1;
+        $rowcount=mysqli_num_rows($result1);
         //grananje je radi zareza na kraju zadnjeg taga
         while ($row1 = mysqli_fetch_assoc($result1)){
-            if($brojac != (count($row1)-2)){
+            if($brojac != $rowcount){
                 echo '<a class="meni_navigacija" href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].',</a>&nbsp';
             }else{
                 echo '<a class="meni_navigacija" href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].'</a>&nbsp';
@@ -88,30 +94,19 @@ function nazad(){
         <h2><?php echo $row["naslov"];?></h2>
         <p><?php echo $row["opis"];?></p>
         <br>
-        <a class="github_link" href=<?php echo '"'.$row["link"].'"';?>>Link GitHub</a>
+        <?php 
+        if($row["link"]!=Null){
+        echo '<a class="github_link" href="'.$row["link"].'";>>Link GitHub</a>';}
+        ?>
     </div>
 
     <div class = "prikaz">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque, sapiente recusandae molestias ex, laboriosam consequatur, alias ipsa et aut eos? Eum eligendi iste iusto? Ipsa ut impedit aspernatur molestias.</p>
+    <?php
+
+    while($row2=mysqli_fetch_assoc($result2)){
+    echo '<img src="/../images/'.$row2["naziv"].'" alt="'.$row2["naziv"].'", class="slika"><br>';
+}
+    ?>
     </div>
     </body>
 </html>

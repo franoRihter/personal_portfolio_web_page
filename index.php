@@ -51,9 +51,9 @@ $result = mysqli_query($conn, $tekst);
         <p>Dobro došli u moje digitalno skladište!</p>
         <p style="color: #fabd2f;">Ja sam Frano Rihter. Programer, prvostupnik računarstva.</p>
         <p style="color:#98971a;">Svrha stranice je: </p>
-        <p style="padding-left: 10px; color:#83a598;">- predstavljanje aktivnih i gotovih projekata</p>
-        <p style="padding-left: 10px; color:#83a598;">- pohrana stečenog znanja u svrhu ponovne upotrebe</p>
-        <p style="padding-left: 10px; color:#83a598;">- predstavljanje osobnih zanimacija</p>
+        <p style="padding-left: 10px; color:#83a598;">> predstavljanje aktivnih i gotovih projekata</p>
+        <p style="padding-left: 10px; color:#83a598;">> pohrana stečenog znanja u svrhu ponovne upotrebe</p>
+        <p style="padding-left: 10px; color:#83a598;">> predstavljanje mojih zanimacija</p>
         <p>Nadam se da ćete naći ono što tražite ili barem nešto zanimljivo.</p>
     </div>
     <h3>Aktivnosi:</h3>

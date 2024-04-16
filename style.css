@@ -54,6 +54,12 @@ li{
 li:not(:last-child){ 
     margin-right: 15px;  
 }
+.kontakt_link{
+    color:#5083a8;
+}
+.kontakt_link:hover{
+    text-decoration: underline;
+}
 .meni_navigacija:hover{
     text-decoration: underline;
 }
@@ -79,9 +85,7 @@ ovo je blog
     border-color:#d3869b;
     padding-right: 2px;
 }
-.temp1{
-    
-}
+
 .blog_naslovi:hover{
     color: #f2eacc;
     text-decoration:underline;
@@ -125,14 +129,13 @@ ovo je blog
     margin-right: 10%;
 }
 .tag{
-    border: solid 1px;
-    color:#37bbc2;
+    color:#fabd2f;
     padding: 0.2em;
     border-radius: 20px;
 }
 .tag:hover{
-    background-color: #2f8489;
-    color: #1d2021;
+    text-decoration: underline;
+    color: #fabd2f;
 }
 .lista_tagova li{
     font-size: 14px;
@@ -179,7 +182,10 @@ ovo je blog
     background-color: #3c3836;
 }
 .prikaz{
-    width: 63%;
+    width: 67%;
+}
+.slika{
+    width:100%
 }
 .listanje_projekata{
     padding-top:10px;
@@ -253,14 +259,14 @@ ovo je blog
 
 }
 .blog_tag_stil{
-    border: solid 1px;
+
     padding: 0.2em;
-    color:#37bbc2;
+    color:#fabd2f;
     border-radius: 20px;
 }
 .blog_tag_stil:hover{
-    background-color: #2f8489;
-    color: #1d2021;
+    text-decoration: underline;
+    color: #fabd2f;
 }
 .em1{
     padding:0.3px;
@@ -290,11 +296,10 @@ ovo je blog
   }
 @media only screen and (max-width: 800px) {
     .opis{
-        top: 0;
-        right: 0;
+
         padding-bottom: 15px;
-        padding-left: 4px;
-        position: static;
+        padding-left: 20px;
+        position:static;
         width: 100%;
         height: 10%; 
         float: center;
@@ -397,6 +402,19 @@ ovo je blog
         display: inline-block;
         width: 100%;
         height: 280px;
+    }
+    .popis_kutija{
+        width:90%;
+        margin-left:5%;
+        align-items:center;
+        padding-bottom: 6px;
+        
+    }
+    .kutija{
+        
+        align-items:center;
+    
+    
     }
   }
   .mobilni_izbornik.active{
