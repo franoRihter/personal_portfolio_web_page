@@ -85,9 +85,9 @@ function nazad(){
         //grananje je radi zareza na kraju zadnjeg taga
         while ($row1 = mysqli_fetch_assoc($result1)){
             if($brojac != $rowcount){
-                echo '<a href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].',</a>&nbsp';
+                echo '<a class="meni_navigacija" href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].',</a>&nbsp';
             }else{
-                echo '<a href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].'</a>&nbsp';
+                echo '<a class="meni_navigacija" href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].'</a>&nbsp';
             }
             $brojac+=1;
             }?></p>
