@@ -63,6 +63,13 @@ li:not(:last-child){
 .meni_navigacija:hover{
     text-decoration: underline;
 }
+.projekt_tag:hover{
+    text-decoration: underline;
+}
+.projekt_tag{
+    display: flex;
+    flex-wrap: wrap;
+}
 /*
 ovo je blog
 */
@@ -162,6 +169,8 @@ ovo je blog
     height: 280px;
 }
 .jezici{
+    display: flex;
+    flex-wrap: wrap;
     padding: none;
     margin: none;
     font-size: 14px;

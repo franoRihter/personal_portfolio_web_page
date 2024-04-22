@@ -79,15 +79,15 @@ function nazad(){
             </span>
         </div>
         <!-- tagovi -->
-        <p><?php 
+        <p class="projekt_tag"><?php 
         $brojac=1;
         $rowcount=mysqli_num_rows($result1);
         //grananje je radi zareza na kraju zadnjeg taga
         while ($row1 = mysqli_fetch_assoc($result1)){
             if($brojac != $rowcount){
-                echo '<a class="meni_navigacija" href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].',</a>&nbsp';
+                echo '<a href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].',</a>&nbsp';
             }else{
-                echo '<a class="meni_navigacija" href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].'</a>&nbsp';
+                echo '<a href="odabrani_tag.php?subject='.$row1["tag"].'">'.$row1["tag"].'</a>&nbsp';
             }
             $brojac+=1;
             }?></p>
@@ -96,7 +96,9 @@ function nazad(){
         <br>
         <?php 
         if($row["link"]!=Null){
-        echo '<a class="github_link" href="'.$row["link"].'";>>Link GitHub</a>';}
+        echo '<a class="github_link" href="'.$row["link"].'";>>Link GitHub</a>';}else{
+            echo'';
+        }
         ?>
     </div>
 
