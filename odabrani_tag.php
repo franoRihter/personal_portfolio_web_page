@@ -6,7 +6,7 @@
     <title>Portfelj | sadrzaj</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
+<body>
 <?php
 //korisno za prikazivanje errora
 ini_set('display_errors', 1);

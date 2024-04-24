@@ -96,7 +96,7 @@ function nazad(){
         <br>
         <?php 
         if($row["link"]!=Null){
-        echo '<a class="github_link" href="'.$row["link"].'";>>Link GitHub</a>';}else{
+        echo '<a class="github_link" href="'.$row["link"].'"; target="_blank">>Link GitHub</a>';}else{
             echo'';
         }
         ?>
